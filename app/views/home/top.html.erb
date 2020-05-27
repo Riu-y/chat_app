@@ -1,22 +1,29 @@
 <p>トップページです</p>
 
 <% if user_signed_in? %>
-  <h2>トークルーム作成</h2>
+  <h3>トークルーム作成</h3>
   <%= form_with model: @room do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
-    <%= f.submit %> 
+    <%= f.submit "トークルームを作る" %> 
   <% end %>
 
-  <h2>参加済トークルーム一覧</h2>
+  <h3>参加済トークルーム一覧</h3>
   <% @rooms.each do |room| %>
-    <%= link_to room_path(room.id) do %>
-    <%= room.name %>
-    <% end %>
+     <div class="table">
+      <td>
+        <%= link_to room_path(room.id) do %>
+          <%= room.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "ルーム削除", room_path(room.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-sm btn-danger" %>
+      </td>
+    </div>
     <br>
   <% end %>
 
-  <h2>未参加トークルーム一覧</h2>
+  <h3>未参加トークルーム一覧</h3>
   <% @nonrooms.each do |room| %>
     <%= link_to room_path(room.id) do %>
     <%= room.name %>
