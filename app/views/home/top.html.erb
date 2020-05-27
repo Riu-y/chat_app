@@ -5,17 +5,22 @@
   <%= form_with model: @room do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
-    <%= f.submit %>
+    <%= f.submit %> 
   <% end %>
 
   <h2>参加済トークルーム一覧</h2>
   <% @rooms.each do |room| %>
+    <%= link_to room_path(room.id) do %>
     <%= room.name %>
+    <% end %>
+    <br>
   <% end %>
 
   <h2>未参加トークルーム一覧</h2>
   <% @nonrooms.each do |room| %>
+    <%= link_to room_path(room.id) do %>
     <%= room.name %>
+    <% end %>
   <% end %>
 <% end %>
 
