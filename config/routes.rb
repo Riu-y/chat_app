@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 	}
 	root 'home#top'
 
-	resources :rooms, only: [:show, :create]
+	resources :rooms, only: [:show, :create, :destroy]
 end
